@@ -1,5 +1,3 @@
-import javax.lang.model.util.ElementScanner6;
-
 public class Cola {
 
     private Object[] arreglo;
@@ -19,7 +17,7 @@ public class Cola {
             arreglo[this.fin] = n;
             this.fin = (this.fin + 1) % TAM;
             b=true;
-        } else if ((this.fin + 1) % TAM != (this.frente) % TAM) {
+        } else if ((this.fin + 1) % TAM == (this.frente) % TAM) {
             b=false;
         }else{
             arreglo[this.fin] = n;
@@ -41,7 +39,7 @@ public class Cola {
         return b;
     }
 
-    public Object obtenerTope(){
+    public Object obtenerFrente(){
         Object elem=null;
         if (!esVacia()) {
         elem=arreglo[this.frente];   
@@ -63,6 +61,32 @@ public class Cola {
                 i++;
             }
         }
+    }
+
+    public Cola clone(){
+        Cola colacha = new Cola();
+        int i=0;
+        if(!esVacia()){
+            while (i<TAM) {
+                colacha.arreglo[i]=this.arreglo[i];       
+                i++;
+            }
+        }
+        return colacha;
+    }
+
+    @Override
+    public String toString(){
+        String p="La cola esta vacia";
+        int i=0;
+        if(!esVacia()){
+            p="[";
+            while (i<TAM && this.arreglo[i]!=null) {
+                p=p+this.arreglo[i]+", ";
+                i++;
+            }
+        }
+        return p+"]";
     }
 
 }
