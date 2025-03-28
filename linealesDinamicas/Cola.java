@@ -45,25 +45,31 @@ public class Cola {
     }
 
     public void vaciar(){
-        while(!esVacia()){
+        while(this.frente!=null){
             this.frente=this.frente.getEnlace();
         }
     }
 
-    public Cola clone(){
-        Cola colacha=new Cola();
-        if(colacha.fin.getEnlace()!=null){
-            colacha.cloneNodos(this.frente);
+    public Cola clone() {
+        Cola colacha = new Cola();
+        if (this.frente != null) {
+            colacha.frente = cloneNodos(this.frente);
+            Nodo aux = colacha.frente;
+            while (aux.getEnlace() != null) {
+                aux = aux.getEnlace();
+            }
+            colacha.fin = aux;
         }
-        return colacha = new Cola();
+        return colacha;
     }
 
-    public Nodo cloneNodos(Nodo n1){
-        Nodo nodito=n1;
-        if (nodito.getEnlace()==null) {
-            nodito=new Nodo(n1.getElem(),null);
-        } else {
-            nodito=new Nodo(n1.getElem(), cloneNodos(nodito.getEnlace()));
+    public Nodo cloneNodos(Nodo n1) {
+        Nodo nodito = null;
+        if (n1 != null) {
+            nodito = new Nodo(n1.getElem(), null);
+            if (n1.getEnlace() != null) {
+                nodito.setEnlace(cloneNodos(n1.getEnlace()));
+            }
         }
         return nodito;
     }

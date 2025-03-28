@@ -1,3 +1,5 @@
+
+
 public class TestCola {
     static String sOk = "OK!", sErr = "ERROR";
 
