@@ -51,18 +51,29 @@ public class Cola {
         }
     }
 
-    public Cola cloneRec() {
-        Cola colacha = new Cola();
-        if (this.frente != null) {
-            colacha.frente = cloneNodos(this.frente);
-            Nodo aux = colacha.frente;
-            while (aux.getEnlace() != null) {
-                aux = aux.getEnlace();
-            }
-            colacha.fin = aux;
-        }
-        return colacha;
-    }
+    // public Cola cloneRec() {
+    //     Cola colacha = new Cola();
+    //     if (this.frente != null) {
+    //         colacha.frente = cloneNodos(this.frente);
+    //         Nodo aux = colacha.frente;
+    //         while (aux.getEnlace() != null) {
+    //             aux = aux.getEnlace();
+    //         }
+    //         colacha.fin = aux;
+    //     }
+    //     return colacha;
+    // }
+
+    // public Nodo cloneNodos(Nodo n1) {
+    //     Nodo nodito = null;
+    //     if (n1 != null) {
+    //         nodito = new Nodo(n1.getElem(), null);
+    //         if (n1.getEnlace() != null) {
+    //             nodito.setEnlace(cloneNodos(n1.getEnlace()));
+    //         }
+    //     }
+    //     return nodito;
+    // }
 
     public Nodo cloneNodos(Nodo n1) {
         Nodo nodito = null;
